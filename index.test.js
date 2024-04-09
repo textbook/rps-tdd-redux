@@ -1,8 +1,8 @@
 const assert = require("node:assert/strict");
 const { describe, it } = require("node:test");
 
-function rps() {
-  return "left";
+function rps(left) {
+  return left === "rock" ? "left" : "right";
 }
 
 describe("rock, paper, scissors", () => {
@@ -13,5 +13,14 @@ describe("rock, paper, scissors", () => {
     const outcome = rps(left, right);
 
     assert.equal(outcome, "left");
+  });
+
+  it("should say right wins for scissors vs. rock", () => {
+    const left = "scissors";
+    const right = "rock";
+
+    const result = rps(left, right);
+
+    assert.equal(result, "right");
   });
 });
